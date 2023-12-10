@@ -9,17 +9,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
 </head>
 <body>
     
     <header>
+
         <h1>definitely not wordle</h1>
+
     </header>
 
     
     
     <main>
+        <form class="color-picker" action="">
+            <fieldset>
+
+                <legend class="visually-hidden">Pick a color scheme</legend>
+
+                <label for="dark" class="visually-hidden">Dark</label>
+                <input type="radio" name="theme" id="dark" checked>
+
+                <label for="light" class="visually-hidden">Light</label>
+                <input type="radio" name="theme" id="light">
+
+                <label for="pink" class="visually-hidden">Pink</label>
+                <input type="radio" name="theme" id="pink">
+
+                <label for="green" class="visually-hidden">Green</label>
+                <input type="radio" name="theme" id="green">
+
+            </fieldset>
+        </form>
+
         <section class="game">
 
             <div id="guess1" class="guess" data-letters="">
@@ -107,7 +129,7 @@
                 <button class="keyboard-button">b</button>
                 <button class="keyboard-button">n</button>
                 <button class="keyboard-button">m</button>
-                <button class="keyboard-button">del</button>
+                <button class="keyboard-button"><i class='bx bxs-tag-x'></i></button>
             </div>
         </section>
 

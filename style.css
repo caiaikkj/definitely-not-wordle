@@ -1,6 +1,10 @@
 :root{
     --txt_clr: #ededed;
     --bg_clr: #121212;
+    --clr-correct: hsl(143, 30%, 53%);
+    --clr-present: hsl(54, 46%, 56%);
+    --clr-absent: hsl(0, 0%, 32%);
+    --clr-hasletter: hsl(0, 0%, 55%);
 }
 
 html {
@@ -51,6 +55,8 @@ header {
     flex-direction: row;
     justify-content: center;
     padding: 16px;
+    border-bottom: solid 1px;
+    color: var(--txt_clr);
 }
 
 header > h1{
@@ -59,10 +65,90 @@ header > h1{
     margin: auto;
 }
 
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.color-picker > fieldset {
+    border: 0;
+    display: flex;
+    gap: 2rem;
+    width: fit-content;
+    background: var(--clr-absent);
+    padding: 1rem 3rem;
+    margin-inline: auto;
+    margin-bottom: 2.225rem;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.color-picker input[type="radio"] {
+    appearance: none;
+    background: transparent;
+    width: 1rem;
+    height: 1rem;
+    outline: 3px solid var(--radio-color, currentColor);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+.color-picker input[type="radio"]:checked {
+    background-color: var(--radio-color);
+}
+
+#dark {
+    --radio-color: hsl(0, 0%, 7%);
+}
+
+#light {
+    --radio-color: hsl(20, 37%, 97%);
+}
+
+#pink {
+    --radio-color: hsl(306, 68%, 62%);
+}
+
+#green {
+    --radio-color: hsl(100, 41%, 45%);
+}
+
+:root:has(#light:checked) {
+    --txt_clr: #121212;
+    --bg_clr: #ededed;
+    --clr-correct: #549c6f;
+    --clr-present: #a4993d;
+    --clr-absent: #adadad;
+    --clr-hasletter: rgb(116, 116, 116)
+}
+
+:root:has(#pink:checked) {
+    --txt_clr: hsl(306, 51%, 45%);
+    --bg_clr: hsl(308, 50%, 97%);
+    --clr-correct: hsl(253, 71%, 81%);
+    --clr-present: hsl(341, 72%, 81%);
+    --clr-absent: hsl(306, 65%, 74%);
+    --clr-hasletter: hsl(306, 75%, 65%);
+}
+
+:root:has(#green:checked) {
+    --txt_clr: #10160d;
+    --bg_clr: #fafcf9;
+    --clr-correct: hsl(157, 53%, 69%);
+    --clr-present: hsl(65, 61%, 75%);
+    --clr-absent: #b6d7a6;
+    --clr-hasletter: #7db163;
+}
+
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2.225rem;
 }
 
 .guess {
@@ -73,7 +159,7 @@ header > h1{
 }
 
 .tile {
-    border: .125rem solid hsl(0, 0%, 32%);
+    border: .125rem solid var(--clr-absent);
     width: 3.25rem;
     height: 3.25rem;
     display: flex;
@@ -84,22 +170,22 @@ header > h1{
 }
 
 .has-letter {
-    border-color: hsl(0, 0%, 55%);
+    border-color: var(--clr-hasletter);
 }
 
 .correct {
-    background-color: hsl(143, 30%, 53%);
-    border-color: hsl(143, 30%, 53%);
+    background-color: var(--clr-correct);
+    border-color: var(--clr-correct);
 }
 
 .present {
-    background-color: hsl(54, 46%, 56%);
-    border-color: hsl(54, 46%, 56%);
+    background-color: var(--clr-present);
+    border-color: var(--clr-present);
 }
 
 .absent {
-    background-color: hsl(0, 0%, 32%);
-    border-color: hsl(0, 0%, 32%);
+    background-color: var(--clr-absent);
+    border-color: var(--clr-absent);
 }
 
 .keyboard-cont {
@@ -136,7 +222,13 @@ button {
     padding-inline: 1.125rem !important;
     border: transparent;
     border-radius: 16px;
-    background-color: hsl(0, 0%, 32%);
+    background-color: var(--clr-absent);
+}
+
+button > i {
+    background-color: transparent;
+    font-size: 2rem;
+    text-align: center;
 }
 
 @keyframes flip-in {
